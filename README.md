@@ -22,6 +22,18 @@ Then open:
 http://127.0.0.1:4173
 ```
 
+## Environment
+
+The recruiter assistant expects this variable:
+
+```bash
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+```
+
+- For local development, copy `.env.example` to `.env` and fill in your real key.
+- For Railway, add `ANTHROPIC_API_KEY` in the service `Variables` tab.
+- A real `.env` file should not be committed to Git.
+
 ## Deploying to Railway
 
 This repo is prepared to deploy through Railway using the root `Dockerfile`.
@@ -45,4 +57,3 @@ Recommended deploy flow:
 
 - The site is served as a static web app through Caddy.
 - `try_files {path} /index.html` is included so deep links keep resolving to `index.html`.
-
