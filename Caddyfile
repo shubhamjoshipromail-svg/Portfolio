@@ -1,11 +1,15 @@
 {
-  auto_https off
+    admin off
+    auto_https off
 }
 
 :{$PORT:8080} {
-  root * /usr/share/caddy
-  encode gzip zstd
-  try_files {path} /index.html
-  file_server
-}
+    encode zstd gzip
 
+    @api path /api/*
+    reverse_proxy @api 127.0.0.1:8000
+
+    root * /srv
+    try_files {path} /index.html
+    file_server
+}

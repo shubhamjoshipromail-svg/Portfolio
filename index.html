@@ -1055,6 +1055,73 @@
       </footer>
     </div>
 
+    <button
+      class="portfolio-chat-toggle"
+      type="button"
+      aria-controls="portfolio-chat-panel"
+      aria-expanded="false"
+    >
+      <span class="portfolio-chat-toggle-dot" aria-hidden="true"></span>
+      <span>Ask about this portfolio</span>
+    </button>
+
+    <section
+      class="portfolio-chat-panel"
+      id="portfolio-chat-panel"
+      aria-labelledby="portfolio-chat-title"
+      hidden
+    >
+      <div class="portfolio-chat-header">
+        <div>
+          <h2 class="portfolio-chat-title" id="portfolio-chat-title">Portfolio assistant</h2>
+          <p class="portfolio-chat-subtitle">
+            Grounded in Shubham's published materials. Cites sources.
+          </p>
+        </div>
+        <button
+          class="portfolio-chat-close"
+          type="button"
+          aria-label="Close portfolio assistant"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="portfolio-chat-transcript" aria-live="polite" aria-atomic="false"></div>
+
+      <div class="portfolio-chat-suggestions">
+        <button type="button" class="portfolio-chat-suggestion">
+          What did Shubham build at ACHP?
+        </button>
+        <button type="button" class="portfolio-chat-suggestion">
+          Tell me about RxCheck
+        </button>
+        <button type="button" class="portfolio-chat-suggestion">
+          What is he looking for?
+        </button>
+      </div>
+
+      <form class="portfolio-chat-form">
+        <label class="visually-hidden" for="portfolio-chat-input">Your question</label>
+        <input
+          class="portfolio-chat-input"
+          id="portfolio-chat-input"
+          name="question"
+          type="text"
+          autocomplete="off"
+          placeholder="Ask about Shubham's work, projects, or background"
+        />
+        <button class="button button-primary portfolio-chat-submit" type="submit">
+          Ask
+        </button>
+      </form>
+
+      <p class="portfolio-chat-footnote">
+        Answers come from published portfolio materials only. For anything else, email
+        Shubham directly.
+      </p>
+    </section>
+
     <script src="./script.js"></script>
   </body>
 </html>
