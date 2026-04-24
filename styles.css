@@ -1546,7 +1546,7 @@ body.theme-night .experience-tags span {
 }
 
 .skill-layout {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .skill-label {
@@ -1695,11 +1695,14 @@ body.theme-night .contact-details article {
   .about-intro,
   .about-layout,
   .positioning-section .status-card,
-  .skill-layout,
   .contact-panel,
   .contact-details,
   .insight-grid {
     grid-template-columns: 1fr;
+  }
+
+  .skill-layout {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .proof-strip {
@@ -1842,6 +1845,10 @@ body.theme-night .contact-details article {
 
   .proof-strip {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-layout {
+    grid-template-columns: 1fr;
   }
 
   .metrics-band-two,
