@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+Shubham_Joshi_Master_CV.docx
+
+# Local tooling
+.railway
+.vercel
+.netlify
+
+# Build and package artifacts
+node_modules
+dist
+build
