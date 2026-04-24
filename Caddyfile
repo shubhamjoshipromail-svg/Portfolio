@@ -6,10 +6,13 @@
 :{$PORT:8080} {
     encode zstd gzip
 
-    @api path /api/*
-    reverse_proxy @api 127.0.0.1:8000
+    handle /api/* {
+        reverse_proxy 127.0.0.1:8000
+    }
 
-    root * /srv
-    try_files {path} /index.html
-    file_server
+    handle {
+        root * /srv
+        try_files {path} /index.html
+        file_server
+    }
 }
