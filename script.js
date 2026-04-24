@@ -150,7 +150,6 @@ const chatSuggestionButtons = document.querySelectorAll(".portfolio-chat-suggest
 const chatForm = document.querySelector(".portfolio-chat-form");
 const chatInput = document.querySelector(".portfolio-chat-input");
 const chatSubmit = document.querySelector(".portfolio-chat-submit");
-const chatOpenStorageKey = "portfolio-chat-open";
 
 const sourceLabels = {
   home: "View intro",
@@ -188,13 +187,8 @@ const setChatOpen = (isOpen) => {
   chatPanel.hidden = !isOpen;
   chatToggle.setAttribute("aria-expanded", String(isOpen));
 
-  if (isOpen) {
-    window.sessionStorage.setItem(chatOpenStorageKey, "true");
-    if (!chatRequestInFlight) {
-      window.setTimeout(() => chatInput?.focus(), 0);
-    }
-  } else {
-    window.sessionStorage.removeItem(chatOpenStorageKey);
+  if (isOpen && !chatRequestInFlight) {
+    window.setTimeout(() => chatInput?.focus(), 0);
   }
 };
 
@@ -439,6 +433,26 @@ chatCloseButton?.addEventListener("click", () => {
   setChatOpen(false);
 });
 
+chatPanel?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+chatToggle?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    chatPanel &&
+    chatToggle &&
+    !chatPanel.hidden &&
+    !chatPanel.contains(event.target) &&
+    !chatToggle.contains(event.target)
+  ) {
+    setChatOpen(false);
+  }
+});
+
 chatForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   await submitChatQuestion(chatInput?.value || "");
@@ -457,8 +471,4 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-if (window.sessionStorage.getItem(chatOpenStorageKey) === "true") {
-  setChatOpen(true);
-} else {
-  updateSuggestionVisibility();
-}
+updateSuggestionVisibility();

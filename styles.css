@@ -1945,46 +1945,53 @@ body.theme-night .contact-details article {
   z-index: 45;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  border: 0;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
   border-radius: 999px;
-  color: #fffaf5;
-  background: var(--accent);
+  color: var(--text);
+  background: color-mix(in srgb, var(--panel) 90%, white 10%);
   box-shadow: var(--shadow);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
+  backdrop-filter: blur(16px);
 }
 
 body.theme-night .portfolio-chat-toggle {
-  color: #10203f;
-  background: var(--accent);
+  color: var(--text);
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
 }
 
 .portfolio-chat-toggle-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 28%, transparent);
+  flex: 0 0 auto;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 28%, transparent);
   animation: chatPulse 1.8s ease-in-out infinite;
+}
+
+.portfolio-chat-toggle-label {
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .portfolio-chat-panel {
   position: fixed;
   right: 20px;
-  bottom: 86px;
+  bottom: 82px;
   z-index: 44;
-  width: min(400px, calc(100vw - 40px));
-  max-height: 70vh;
+  width: min(360px, calc(100vw - 40px));
+  max-height: min(64vh, 560px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 20px;
+  gap: 14px;
+  padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: rgba(251, 247, 241, 0.9);
+  background: rgba(251, 247, 241, 0.94);
   backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
 }
@@ -2013,14 +2020,26 @@ body.theme-night .portfolio-chat-panel {
 }
 
 .portfolio-chat-close {
-  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   padding: 0;
-  background: transparent;
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.48);
+  color: var(--accent);
   cursor: pointer;
   font: inherit;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
+  font-weight: 700;
   line-height: 1;
+}
+
+body.theme-night .portfolio-chat-close {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .portfolio-chat-transcript {
@@ -2222,11 +2241,12 @@ body.theme-night .portfolio-chat-input {
   .portfolio-chat-toggle {
     right: 14px;
     bottom: 14px;
+    padding: 11px 13px;
   }
 
   .portfolio-chat-panel {
-    right: 20px;
-    left: 20px;
+    right: 14px;
+    left: 14px;
     bottom: 78px;
     width: auto;
     max-height: 72vh;
