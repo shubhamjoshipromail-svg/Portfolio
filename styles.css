@@ -1996,6 +1996,10 @@ body.theme-night .portfolio-chat-toggle {
   box-shadow: var(--shadow);
 }
 
+.portfolio-chat-panel[hidden] {
+  display: none !important;
+}
+
 body.theme-night .portfolio-chat-panel {
   background: rgba(33, 48, 78, 0.88);
 }
