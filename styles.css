@@ -760,11 +760,15 @@ body.theme-night .positioning-proof article {
   gap: 16px;
 }
 
-.visual-grid-split,
-.featured-product {
+.visual-grid-split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.featured-product {
+  display: grid;
+  gap: 22px;
 }
 
 .about-intro {
@@ -1265,14 +1269,13 @@ body.theme-night .thumb-card {
 }
 
 .featured-product-media {
-  min-height: 100%;
   border: 1px solid var(--line);
   border-radius: 24px;
   overflow: hidden;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 52%),
     linear-gradient(180deg, #17191f, #0d0f14);
-  padding: 10px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1298,7 +1301,19 @@ body.theme-night .thumb-card {
 
 .featured-product-copy {
   display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.68fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.featured-product-main {
+  display: grid;
   align-content: start;
+}
+
+.featured-hard-note {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
 }
 
 .featured-product-lead,
@@ -1309,7 +1324,6 @@ body.theme-night .thumb-card {
 }
 
 .featured-hard-label {
-  margin-top: 20px;
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 800;
@@ -1330,6 +1344,12 @@ body.theme-night .thumb-card {
 
 .secondary-products {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.secondary-product-stack {
+  display: grid;
+  gap: 20px;
 }
 
 .secondary-work-card .case-chips {
@@ -1389,9 +1409,58 @@ body.theme-night .product-proof-list {
   line-height: 1.4;
 }
 
-.supporting-work {
+.supporting-work,
+.supporting-work-links {
   display: grid;
   gap: 10px;
+}
+
+.supporting-work-card {
+  box-shadow: none;
+}
+
+.supporting-work-card p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.supporting-work-links {
+  margin-top: 18px;
+}
+
+.supporting-work-link {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.34);
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+body.theme-night .supporting-work-link {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.supporting-work-link:hover,
+.supporting-work-link:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.supporting-work-link span {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.supporting-work-link small {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .editorial-callout {
@@ -1742,6 +1811,18 @@ body.theme-night .contact-details article {
   .case-study-reverse .case-study-copy,
   .case-study-reverse .case-visual {
     order: initial;
+  }
+
+  .featured-product-copy {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .featured-hard-note {
+    padding-top: 20px;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 
   .achp-chain-header {

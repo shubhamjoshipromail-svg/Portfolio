@@ -688,83 +688,128 @@
               </div>
 
               <div class="featured-product-copy">
-                <div class="work-meta">
-                  <span>Featured Product</span>
-                  <span>FastAPI + Multi-Provider LLMs</span>
+                <div class="featured-product-main">
+                  <div class="work-meta">
+                    <span>Featured Product</span>
+                    <span>FastAPI + Multi-Provider LLMs</span>
+                  </div>
+                  <h3>FridgeChef, an AI-powered recipe generation platform</h3>
+                  <p class="featured-product-lead">
+                    A consumer-facing AI workflow that turns fridge photos,
+                    receipts, and kitchen inventory into usable meal planning
+                    rather than one-off generation demos.
+                  </p>
+                  <div class="case-chips">
+                    <span>Live Product</span>
+                    <span>Multi-Provider LLMs</span>
+                    <span>SSE Streaming</span>
+                  </div>
+                  <div class="featured-product-actions">
+                    <a
+                      class="button button-primary"
+                      href="https://fride-project-production.up.railway.app"
+                      target="_blank"
+                      rel="noreferrer"
+                      >Launch live demo -&gt;</a
+                    >
+                    <a class="button button-secondary" href="#fridgechef-case-study">Read case study -&gt;</a>
+                  </div>
                 </div>
-                <h3>FridgeChef, an AI-powered recipe generation platform</h3>
-                <p class="featured-product-lead">
-                  A consumer-facing AI workflow that turns fridge photos,
-                  receipts, and kitchen inventory into usable meal planning
-                  rather than one-off generation demos.
-                </p>
-                <div class="case-chips">
-                  <span>Live Product</span>
-                  <span>Multi-Provider LLMs</span>
-                  <span>SSE Streaming</span>
-                </div>
-                <p class="featured-hard-label">What was hard</p>
-                <!-- TODO: Replace this placeholder with 2-3 sentences on a real engineering decision: model routing, streaming, or fuzzy deduplication. -->
-                <p class="featured-hard-copy">
-                  The strongest version of this section should explain one
-                  technical tradeoff in detail, such as why the routing logic
-                  exists or how the streaming experience was made responsive
-                  without overcomplicating the product.
-                </p>
-                <div class="featured-product-actions">
-                  <a
-                    class="button button-primary"
-                    href="https://fride-project-production.up.railway.app"
-                    target="_blank"
-                    rel="noreferrer"
-                    >Launch live demo -&gt;</a
-                  >
-                  <a class="button button-secondary" href="#fridgechef-case-study">Read case study -&gt;</a>
+
+                <div class="featured-hard-note">
+                  <p class="featured-hard-label">What was hard</p>
+                  <p class="featured-hard-copy">
+                    The hardest problem wasn't model routing or streaming - it
+                    was inventory deduplication. When ingredients came from
+                    multiple sources (fridge scans, manual input, receipts),
+                    the system produced duplicates like "chicken breast,"
+                    "chicken," and "raw chicken" as separate items. I solved
+                    this with a lightweight fuzzy matching approach using
+                    bidirectional substring containment, collapsing variations
+                    into a single entry without heavy model overhead. It's not
+                    perfect - edge cases still exist, and a production system
+                    would likely use embeddings or richer training data - but
+                    it was the most unexpectedly interesting challenge, sitting
+                    at the intersection of data consistency, UX, and applied AI.
+                  </p>
                 </div>
               </div>
             </article>
 
             <div class="secondary-products">
-              <article class="work-card secondary-work-card">
-                <div class="work-placeholder">
-                  <img
-                    class="work-image"
-                    src="./assets/rxcheck-ui.png"
-                    alt="RxCheck interface showing clinical interaction findings"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="work-meta">
-                  <span>Healthcare Product</span>
-                  <span>FastAPI + React</span>
-                </div>
-                <h3>RxCheck, a pharmacist-facing drug interaction tracker</h3>
-                <p>
-                  Deterministic interaction checks plus a bounded LLM explainer,
-                  built so the data model stays the source of truth.
-                </p>
-                <div class="case-chips">
-                  <span>Clinical Logic</span>
-                  <span>Bounded LLM</span>
-                  <span>Audit Trail</span>
-                </div>
-                <ul class="product-proof-list" aria-label="RxCheck technical highlights">
-                  <li>Deterministic database remains the source of truth.</li>
-                  <li>LLM only explains validated interaction rows.</li>
-                </ul>
-                <div class="secondary-actions">
-                  <a class="button button-primary" href="#rxcheck-case-study">Read case study ↑</a>
-                  <a
-                    class="button button-secondary"
-                    href="https://pharmacy-production-f226.up.railway.app/"
-                    target="_blank"
-                    rel="noreferrer"
-                    >Launch live demo -&gt;</a
-                  >
-                </div>
-                <p class="product-quote">"LLM as explainer, not source of truth"</p>
-              </article>
+              <div class="secondary-product-stack">
+                <article class="work-card secondary-work-card">
+                  <div class="work-placeholder">
+                    <img
+                      class="work-image"
+                      src="./assets/rxcheck-ui.png"
+                      alt="RxCheck interface showing clinical interaction findings"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="work-meta">
+                    <span>Healthcare Product</span>
+                    <span>FastAPI + React</span>
+                  </div>
+                  <h3>RxCheck, a pharmacist-facing drug interaction tracker</h3>
+                  <p>
+                    Deterministic interaction checks plus a bounded LLM explainer,
+                    built so the data model stays the source of truth.
+                  </p>
+                  <div class="case-chips">
+                    <span>Clinical Logic</span>
+                    <span>Bounded LLM</span>
+                    <span>Audit Trail</span>
+                  </div>
+                  <ul class="product-proof-list" aria-label="RxCheck technical highlights">
+                    <li>Deterministic database remains the source of truth.</li>
+                    <li>LLM only explains validated interaction rows.</li>
+                  </ul>
+                  <div class="secondary-actions">
+                    <a class="button button-primary" href="#rxcheck-case-study">Read case study ↑</a>
+                    <a
+                      class="button button-secondary"
+                      href="https://pharmacy-production-f226.up.railway.app/"
+                      target="_blank"
+                      rel="noreferrer"
+                      >Launch live demo -&gt;</a
+                    >
+                  </div>
+                  <p class="product-quote">"LLM as explainer, not source of truth"</p>
+                </article>
+
+                <article class="work-card supporting-work-card">
+                  <div class="work-meta">
+                    <span>Supporting Work</span>
+                    <span>Dashboards + Simulation + Data Design</span>
+                  </div>
+                  <h3>Additional applied analytics work</h3>
+                  <p>
+                    Supporting work also spans Tableau dashboards, Monte Carlo
+                    simulation, and healthcare database design.
+                  </p>
+                  <div class="supporting-work-links">
+                    <a
+                      class="supporting-work-link"
+                      href="https://public.tableau.com/views/SalesPerformanceAnalyticsDashboard/Story1"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>Tableau dashboards -&gt;</span>
+                      <small>Sales performance story built for quick business readout.</small>
+                    </a>
+                    <a class="supporting-work-link" href="#skills">
+                      <span>Monte Carlo simulation -&gt;</span>
+                      <small>Simulation and uncertainty work folded into the broader analytics toolkit.</small>
+                    </a>
+                    <a class="supporting-work-link" href="#skills">
+                      <span>Healthcare database design -&gt;</span>
+                      <small>Structured healthcare data modeling alongside the RxCheck and CMS work.</small>
+                    </a>
+                  </div>
+                </article>
+              </div>
 
               <article class="work-card secondary-work-card">
                 <div class="work-placeholder">
@@ -794,19 +839,6 @@
               </article>
             </div>
 
-            <div class="supporting-work">
-              <p>
-                Supporting work also spans Tableau dashboards, Monte Carlo
-                simulation, and healthcare database design.
-              </p>
-              <a
-                class="inline-link"
-                href="https://public.tableau.com/views/SalesPerformanceAnalyticsDashboard/Story1"
-                target="_blank"
-                rel="noreferrer"
-                >See also: Tableau dashboards, Monte Carlo simulation, healthcare database design -&gt;</a
-              >
-            </div>
           </div>
         </section>
 
@@ -1002,18 +1034,15 @@
           <div class="contact-panel">
             <div class="contact-copy">
               <p class="eyebrow">Contact</p>
-              <h2>Whether the role says "generalist" or "specialist," I'm probably a fit</h2>
+              <h2>The work I want lives between building and explaining.</h2>
               <p>
-                The work I want lives between building and explaining -
-                consulting, product, AI implementation, ML engineering,
-                analytics, data science, digital transformation. Different
-                names, same shape. If your role needs someone who can go deep
-                when the problem needs depth and wide when it needs range,
-                let's talk.
+                Applied AI, data science, technical PM, AI strategy — different
+                names, same shape. If you need someone who can go deep when the
+                problem needs depth and wide when it needs range, let's talk.
               </p>
               <div class="contact-note">
                 <span class="contact-note-label">Currently looking for</span>
-                <p>Full-time roles or internships, summer 2026 start. US-based, open to hybrid or remote.</p>
+                <p>Full-time roles, August 2026 start. Applied AI, data science, or AI product. US-based, open to relocation.</p>
               </div>
             </div>
 
@@ -1073,7 +1102,7 @@
                 </article>
                 <article>
                   <span class="contact-detail-label">Strength</span>
-                  <p>Analytics that balance technical rigor, business framing, and clear communication.</p>
+                  <p>Finding the real problem, building something against it, and explaining why it works to anyone in the room.</p>
                 </article>
               </div>
             </div>
