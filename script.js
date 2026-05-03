@@ -10,6 +10,30 @@ const prefersReducedMotion = window.matchMedia(
 ).matches;
 const themeStorageKey = "portfolio-theme";
 
+const staggerSelectors = [
+  ".proof-card",
+  ".status-card",
+  ".case-study",
+  ".case-visual",
+  ".visual-panel",
+  ".metrics-band-cell",
+  ".featured-product",
+  ".work-card",
+  ".skill-group",
+  ".about-copy",
+  ".experience-list article",
+  ".contact-panel",
+  ".contact-details article",
+];
+
+document.querySelectorAll(".reveal").forEach((container) => {
+  const children = container.querySelectorAll(staggerSelectors.join(","));
+  children.forEach((child, index) => {
+    child.classList.add("motion-child");
+    child.style.setProperty("--reveal-delay", `${Math.min(index, 8) * 70}ms`);
+  });
+});
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -20,14 +44,35 @@ const revealObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.18,
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.01,
   }
 );
+
+const revealVisibleSections = () => {
+  sections.forEach((section) => {
+    if (section.classList.contains("is-visible")) {
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const entersViewport = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+    if (entersViewport) {
+      section.classList.add("is-visible");
+      revealObserver.unobserve(section);
+    }
+  });
+};
 
 if (prefersReducedMotion) {
   sections.forEach((section) => section.classList.add("is-visible"));
 } else {
   sections.forEach((section) => revealObserver.observe(section));
+  window.requestAnimationFrame(revealVisibleSections);
+  window.addEventListener("load", revealVisibleSections, { once: true });
+  window.addEventListener("scroll", revealVisibleSections, { passive: true });
+  window.addEventListener("resize", revealVisibleSections);
 }
 
 const setScrollProgress = () => {
@@ -62,22 +107,35 @@ document.querySelectorAll("main section[id]").forEach((section) => {
   sectionObserver.observe(section);
 });
 
+const formatCountValue = (value, decimals, suffix) => {
+  const formatted =
+    decimals > 0
+      ? value.toFixed(decimals)
+      : Math.round(value).toLocaleString("en-US");
+  return `${formatted}${suffix}`;
+};
+
 const animateCount = (element) => {
   const target = Number(element.dataset.countup || "0");
-  const suffix = element.textContent.includes("+") ? "+" : "";
-  let frame = 0;
-  const totalFrames = 36;
+  const decimals = Number(element.dataset.countupDecimals || "0");
+  const suffix = element.dataset.countupSuffix || "";
+  const duration = 1250;
+  const startTime = performance.now();
 
-  const tick = () => {
-    frame += 1;
-    const value = Math.round((target * frame) / totalFrames);
-    element.textContent = `${value}${suffix}`;
-    if (frame < totalFrames) {
+  const tick = (now) => {
+    const progress = Math.min(1, (now - startTime) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    element.textContent = formatCountValue(target * eased, decimals, suffix);
+
+    if (progress < 1) {
       requestAnimationFrame(tick);
+    } else {
+      element.textContent = formatCountValue(target, decimals, suffix);
     }
   };
 
-  tick();
+  element.textContent = formatCountValue(0, decimals, suffix);
+  requestAnimationFrame(tick);
 };
 
 if (!prefersReducedMotion) {
@@ -96,6 +154,60 @@ if (!prefersReducedMotion) {
   );
 
   countUps.forEach((counter) => counterObserver.observe(counter));
+}
+
+const prepareSvgDrawing = (svg) => {
+  const drawableElements = svg.querySelectorAll("path, line, polyline");
+  drawableElements.forEach((element) => {
+    if (typeof element.getTotalLength !== "function") {
+      return;
+    }
+
+    const length = element.getTotalLength();
+    element.style.strokeDasharray = length;
+    element.style.strokeDashoffset = length;
+    element.style.opacity = "0";
+  });
+};
+
+const drawSvg = (svg) => {
+  const panel = svg.closest(".visual-panel");
+  panel?.classList.add("is-drawn");
+
+  const drawableElements = svg.querySelectorAll("path, line, polyline");
+  drawableElements.forEach((element, index) => {
+    window.setTimeout(() => {
+      element.style.strokeDashoffset = "0";
+      element.style.opacity = "1";
+    }, index * 80);
+  });
+};
+
+const visualSvgs = document.querySelectorAll(".visual-panel svg");
+
+if (prefersReducedMotion) {
+  visualSvgs.forEach((svg) => {
+    svg.closest(".visual-panel")?.classList.add("is-drawn");
+  });
+} else {
+  visualSvgs.forEach(prepareSvgDrawing);
+
+  const svgObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          drawSvg(entry.target);
+          svgObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.08,
+    }
+  );
+
+  visualSvgs.forEach((svg) => svgObserver.observe(svg));
 }
 
 const setTheme = (theme) => {
