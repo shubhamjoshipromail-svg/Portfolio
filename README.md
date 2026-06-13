@@ -8,7 +8,7 @@ Live site: https://portfolio-production-9040.up.railway.app/
 
 - Static portfolio built with plain `index.html`, `styles.css`, and `script.js`.
 - Responsive warm/night theme with a persistent theme toggle.
-- Hero, metrics band, case studies, built products, about, core capabilities, and contact sections.
+- Hero, metrics band, flagship case study, technical and product case studies, compact project index, about, core capabilities, and contact sections.
 - Downloadable resume at `assets/Shubham_Joshi_Resume.pdf`.
 - Recruiter-facing AI assistant that answers questions about Shubham's portfolio.
 - FastAPI backend for the assistant, reverse-proxied behind the same Railway service.
@@ -20,11 +20,11 @@ Live site: https://portfolio-production-9040.up.railway.app/
 The main page includes these anchored sections:
 
 - `#home`: hero, profile card, resume/email CTAs, and top metrics.
-- `#work`: selected case studies and built products.
-- `#home-credit-case-study`: responsible AI credit risk modeling.
-- `#cms-case-study`: ACHP / CMS Medicare Advantage consulting analysis.
+- `#work`: selected case studies, compact product index, and supporting work.
+- `#cms-case-study`: flagship ACHP / CMS Medicare Advantage consulting analysis.
+- `#rxcheck-case-study`: technical-depth pharmacist-facing interaction tracker with bounded LLM explanation.
 - `#fridgechef-case-study`: deployed consumer AI product with multi-provider LLM routing.
-- `#rxcheck-case-study`: pharmacist-facing drug interaction tracker with bounded LLM explanation.
+- `#home-credit-case-study`: compact supporting responsible-AI credit risk study.
 - `#about`: background, experience, languages, teaching, and consulting context.
 - `#skills`: six core capability cards.
 - `#contact`: availability, links, and closing pitch.

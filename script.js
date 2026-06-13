@@ -9,6 +9,19 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 const themeStorageKey = "portfolio-theme";
+const caseStudyStack = document.querySelector(".case-study-stack");
+
+[
+  "cms-case-study",
+  "rxcheck-case-study",
+  "fridgechef-case-study",
+  "home-credit-case-study",
+].forEach((caseStudyId) => {
+  const caseStudy = document.getElementById(caseStudyId);
+  if (caseStudyStack && caseStudy) {
+    caseStudyStack.append(caseStudy);
+  }
+});
 
 const staggerSelectors = [
   ".proof-card",

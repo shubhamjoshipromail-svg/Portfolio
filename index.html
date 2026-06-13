@@ -52,11 +52,11 @@
             </p>
             <h1>Generalist by instinct, technical by training.</h1>
             <p class="hero-text">
-              Recently: a credit risk model with a full responsible-AI review, a
-              live healthcare consulting engagement whose findings reach
-              Medicare Advantage policy advocacy, a deployed consumer AI
-              product, and a pharmacist-facing clinical decision support
-              prototype. Before that: freelance work, side projects, and
+              Recently: a live healthcare consulting engagement whose findings
+              reach Medicare Advantage policy advocacy, a pharmacist-facing
+              clinical decision support prototype, a deployed consumer AI
+              product, and a credit risk model with a full responsible-AI
+              review. Before that: freelance work, side projects, and
               whatever I talked myself into across three countries and four
               languages. The pattern is less "specialist" and more "person who
               keeps finding problems nobody else wants to figure out."
@@ -128,9 +128,9 @@
               <p class="metric-note">LightGBM risk workflow with explainability, calibration, drift, and fairness checks.</p>
             </article>
             <article class="proof-card">
-              <span data-countup="3">3</span>
-              <p class="metric-label">Products Built End-to-End</p>
-              <p class="metric-note">FridgeChef, RxCheck, and Nimbus show product taste, backend architecture, and AI boundaries.</p>
+              <span data-countup="2">2</span>
+              <p class="metric-label">Deployed AI Products</p>
+              <p class="metric-note">FridgeChef and RxCheck show product judgment, backend architecture, and disciplined AI boundaries.</p>
             </article>
           </div>
         </section>
@@ -173,7 +173,7 @@
           </div>
 
           <div class="case-study-stack">
-            <article class="case-study" id="home-credit-case-study">
+            <article class="case-study supporting-case-study" id="home-credit-case-study">
               <div class="case-study-copy">
                 <div class="case-meta">
                   <span>Responsible AI</span>
@@ -181,18 +181,13 @@
                 </div>
                 <h3>Home Credit default risk modeling with explainability, fairness, and calibration</h3>
                 <p>
-                  Built a production-minded ML workflow for credit risk using
-                  feature engineering, stratified cross-validation, SMOTE,
-                  model comparison, and a full responsible AI review spanning
-                  SHAP, LIME, fairness checks, and calibration.
+                  Supporting ML work: a production-minded credit-risk workflow
+                  that reached 0.6857 OOF ROC-AUC and added explainability,
+                  fairness auditing, calibration, drift checks, and threshold
+                  tuning.
                 </p>
-                <ul class="case-points">
-                  <li>Benchmarked LightGBM against baselines and reached 0.6857 OOF ROC-AUC versus 0.5041 for a dummy baseline.</li>
-                  <li>Added SHAP, LIME, counterfactual framing, and fairness auditing across demographic slices.</li>
-                  <li>Included Platt scaling, PSI drift checks, and threshold tuning to make the model more deployment-ready.</li>
-                </ul>
               </div>
-              <div class="case-visual reveal-lines">
+              <div class="case-visual reveal-lines" hidden>
                 <div class="visual-stack home-credit-visuals">
                   <div class="visual-grid visual-grid-split">
                     <article class="visual-panel">
@@ -278,36 +273,39 @@
               </div>
             </article>
 
-            <article class="case-study case-study-reverse" id="cms-case-study">
+            <article class="case-study case-study-flagship" id="cms-case-study">
               <div class="case-study-copy">
                 <div class="case-meta">
-                  <span>Live Consulting</span>
+                  <span>Flagship Case Study · Live Consulting</span>
                   <span>Client: ACHP (Alliance of Community Health Plans) • 2025 - Ongoing</span>
                 </div>
-                <h3>CMS Medicare Advantage market analysis shaping national healthcare advocacy</h3>
+                <h3>Revealing how Medicare Advantage carriers shifted costs after the 2026 CMS reimbursement cut</h3>
                 <p>
-                  A live analytics engagement for the Alliance of Community
-                  Health Plans, a national nonprofit representing nonprofit and
-                  community-based health plans that advocates on Medicare
-                  Advantage policy in Washington. The analysis produces evidence
-                  that informs ACHP's policy positions on benefit design, market
-                  structure, and congressional advocacy - work that can
-                  influence how Medicare Advantage is regulated and therefore how
-                  millions of seniors receive care.
+                  The Alliance of Community Health Plans represents nonprofit
+                  and community-based health plans in national healthcare policy
+                  discussions. Its analysis can inform Congressional staff
+                  working on Medicare Advantage legislation, making accuracy and
+                  defensible interpretation essential.
+                </p>
+                <p class="case-question">
+                  <strong>The problem:</strong> When CMS reduced Medicare
+                  Advantage reimbursement for 2026, how did ACHP members and
+                  national carriers differ in the way they shifted and presented
+                  costs to beneficiaries?
                 </p>
                 <ul class="case-points">
                   <li>Built a four-step ingestion pipeline across CMS Landscape, ACHP Crosswalk, monthly CPSC enrollment, and plan benefit (PBP) data, producing dual-year 2025 and 2026 master files of 138K+ plans across 208 columns.</li>
-                  <li>Ran a supplemental benefit reduction analysis across dental, vision, hearing, transportation, OTC, and fitness benefits, identifying year-over-year benefit retention differences between ACHP member plans and the broader market.</li>
-                  <li>Validated k-means segmentation using three independent criteria - elbow curve, silhouette score, and Davies-Bouldin index - then ran forced k=4 and k=5 solutions to stress-test cluster stability.</li>
-                  <li>Extended segmentation with region-level clustering and stratified HMO-vs-PPO clustering to surface structural differences masked by a single national model.</li>
-                  <li>Produced three findings used in ACHP's internal strategy discussions, including one that shifted advocacy emphasis toward transportation and hearing benefit retention - areas where nonprofit plans differentiate from national for-profit carriers.</li>
+                  <li>Corrected a 12x enrollment overcount, reconciled schema drift, and matched 109,015 plan-county rows for year-over-year analysis; Special Needs Plans were excluded from the primary cost comparison.</li>
+                  <li>Compared premiums, maximum out-of-pocket costs, Part D deductibles, and drug-benefit erosion, isolating Kaiser because fewer than 6% of ACHP plan-county rows represented roughly half of ACHP enrollment.</li>
+                  <li>Tested pricing differences with OLS models controlling for enrollment and Star Rating, disclosing low R-squared values as a limitation.</li>
+                  <li>Validated k-means through elbow, silhouette, and Davies-Bouldin criteria; added regional and plan-type segmentation, a final HMO model with a 0.322 silhouette score, and a five-fold stratified plan-exit model with 0.642 cross-validated AUC.</li>
                 </ul>
                 <div class="case-chips">
                   <span>695M Enrollee-Months</span>
                   <span>138K+ Plans · 208 cols</span>
+                  <span>109,015 Matched Rows</span>
                   <span>Dual-Year 2025/2026</span>
-                  <span>3 Findings</span>
-                  <span>Live Engagement</span>
+                  <span>Policy Recommendation</span>
                 </div>
               </div>
               <div class="case-visual reveal-lines">
@@ -349,16 +347,16 @@
                             <p>2025 and 2026 master files reconciled across schema drift</p>
                           </div>
                           <div class="achp-analysis-pill">
-                            <span>Benefits</span>
-                            <p>Supplemental benefit retention analyzed across six categories</p>
+                            <span>Costs</span>
+                            <p>Premium, MOOP, Part D deductible, and drug-benefit erosion compared</p>
                           </div>
                           <div class="achp-analysis-pill">
-                            <span>Clusters</span>
-                            <p>k-means validated by elbow, silhouette, and Davies-Bouldin</p>
+                            <span>Models</span>
+                            <p>OLS controls, validated k-means, and plan-exit logistic regression</p>
                           </div>
                           <div class="achp-analysis-pill">
                             <span>Stratified</span>
-                            <p>Region-level and HMO vs PPO segmentation run separately</p>
+                            <p>Kaiser, plan type, and county-level positioning analyzed separately</p>
                           </div>
                         </div>
                       </section>
@@ -377,15 +375,15 @@
                         <ol class="achp-decision-list">
                           <li>
                             <span>1</span>
-                            <p>Year-over-year benefit reductions concentrated in categories where ACHP members differentiate from for-profit carriers.</p>
+                            <p>67.5% of national plans eroded drug benefits versus 41.3% of ACHP plans; weighted deductible increases were $114 versus $26.</p>
                           </li>
                           <li>
                             <span>2</span>
-                            <p>Cluster structure shifts materially when HMO and PPO markets are segmented separately, surfacing positioning masked by a single national model.</p>
+                            <p>ACHP plans generally made more cost increases visible through premiums while protecting drug access more strongly.</p>
                           </li>
                           <li class="achp-decision-emphasis">
                             <span>3</span>
-                            <p>Transportation and hearing benefit retention identified as advocacy-relevant differentiator - shaping client strategy for Congressional engagement.</p>
+                            <p>ACHP held a cost advantage in 493 of 875 scored counties; national HMO-POS competitors raised combined member costs $199 more.</p>
                           </li>
                         </ol>
                       </section>
@@ -413,10 +411,9 @@
                   <div class="editorial-callout">
                     <span class="editorial-callout-label">Why this matters</span>
                     <p>
-                      ACHP's policy positions are read by Congressional staff
-                      working on Medicare Advantage legislation. Analysis quality
-                      here is not a coursework question - it has to hold up when
-                      a benefit retention number is cited in a markup.
+                      The analysis supported a clear recommendation: require CMS
+                      to show year-over-year changes in deductibles and
+                      out-of-pocket exposure alongside premiums.
                     </p>
                   </div>
                 </div>
@@ -669,8 +666,8 @@
 
         <section class="section reveal">
           <div class="section-heading">
-            <p class="eyebrow">Built Products</p>
-            <h2>Products shipped with usable live demo now</h2>
+            <p class="eyebrow">Project Index</p>
+            <h2>Case studies first, live products when you want to try them.</h2>
           </div>
 
           <div class="work-showcase">
@@ -690,48 +687,25 @@
               <div class="featured-product-copy">
                 <div class="featured-product-main">
                   <div class="work-meta">
-                    <span>Featured Product</span>
+                    <span>Product Index</span>
                     <span>FastAPI + Multi-Provider LLMs</span>
                   </div>
-                  <h3>FridgeChef, an AI-powered recipe generation platform</h3>
+                  <h3>FridgeChef</h3>
                   <p class="featured-product-lead">
-                    A consumer-facing AI workflow that turns fridge photos,
-                    receipts, and kitchen inventory into usable meal planning
-                    rather than one-off generation demos.
+                    Read the full architecture case study or launch the deployed
+                    product. The screenshot remains available here if the
+                    Railway service is waking up.
                   </p>
-                  <div class="case-chips">
-                    <span>Live Product</span>
-                    <span>Multi-Provider LLMs</span>
-                    <span>SSE Streaming</span>
-                  </div>
                   <div class="featured-product-actions">
+                    <a class="button button-primary" href="#fridgechef-case-study">Read case study -&gt;</a>
                     <a
-                      class="button button-primary"
+                      class="button button-secondary"
                       href="https://fride-project-production.up.railway.app"
                       target="_blank"
                       rel="noreferrer"
                       >Launch live demo -&gt;</a
                     >
-                    <a class="button button-secondary" href="#fridgechef-case-study">Read case study -&gt;</a>
                   </div>
-                </div>
-
-                <div class="featured-hard-note">
-                  <p class="featured-hard-label">What was hard</p>
-                  <p class="featured-hard-copy">
-                    The hardest problem wasn't model routing or streaming - it
-                    was inventory deduplication. When ingredients came from
-                    multiple sources (fridge scans, manual input, receipts),
-                    the system produced duplicates like "chicken breast,"
-                    "chicken," and "raw chicken" as separate items. I solved
-                    this with a lightweight fuzzy matching approach using
-                    bidirectional substring containment, collapsing variations
-                    into a single entry without heavy model overhead. It's not
-                    perfect - edge cases still exist, and a production system
-                    would likely use embeddings or richer training data - but
-                    it was the most unexpectedly interesting challenge, sitting
-                    at the intersection of data consistency, UX, and applied AI.
-                  </p>
                 </div>
               </div>
             </article>
@@ -749,25 +723,17 @@
                     />
                   </div>
                   <div class="work-meta">
-                    <span>Healthcare Product</span>
+                    <span>Product Index</span>
                     <span>FastAPI + React</span>
                   </div>
-                  <h3>RxCheck, a pharmacist-facing drug interaction tracker</h3>
+                  <h3>RxCheck</h3>
                   <p>
-                    Deterministic interaction checks plus a bounded LLM explainer,
-                    built so the data model stays the source of truth.
+                    Read the full data-model case study or launch the deployed
+                    prototype. The representative interface remains visible if
+                    the Railway service is waking up.
                   </p>
-                  <div class="case-chips">
-                    <span>Clinical Logic</span>
-                    <span>Bounded LLM</span>
-                    <span>Audit Trail</span>
-                  </div>
-                  <ul class="product-proof-list" aria-label="RxCheck technical highlights">
-                    <li>Deterministic database remains the source of truth.</li>
-                    <li>LLM only explains validated interaction rows.</li>
-                  </ul>
                   <div class="secondary-actions">
-                    <a class="button button-primary" href="#rxcheck-case-study">Read case study ↑</a>
+                    <a class="button button-primary" href="#rxcheck-case-study">Read case study -&gt;</a>
                     <a
                       class="button button-secondary"
                       href="https://pharmacy-production-f226.up.railway.app/"
@@ -776,7 +742,6 @@
                       >Launch live demo -&gt;</a
                     >
                   </div>
-                  <p class="product-quote">"LLM as explainer, not source of truth"</p>
                 </article>
 
                 <article class="work-card supporting-work-card">
@@ -807,36 +772,17 @@
                       <span>Healthcare database design -&gt;</span>
                       <small>Structured healthcare data modeling alongside the RxCheck and CMS work.</small>
                     </a>
+                    <a class="supporting-work-link" href="#home-credit-case-study">
+                      <span>Responsible credit-risk modeling -&gt;</span>
+                      <small>0.6857 OOF ROC-AUC with explainability, fairness, calibration, and drift checks.</small>
+                    </a>
+                    <div class="supporting-work-link supporting-work-note">
+                      <span>Nimbus prototype</span>
+                      <small>Early hackathon scaffold for a student-facing AI companion focused on burnout.</small>
+                    </div>
                   </div>
                 </article>
               </div>
-
-              <article class="work-card secondary-work-card">
-                <div class="work-placeholder">
-                  <img
-                    class="work-image"
-                    src="./assets/nimbus-ui.png"
-                    alt="Nimbus interface showing supportive AI companion conversation flow"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="work-meta">
-                  <span>AI Product Demo</span>
-                  <span>Hackathon Scaffold</span>
-                </div>
-                <h3>Nimbus, an AI companion concept focused on student burnout</h3>
-                <p>
-                  A local demo scaffold for a student-facing AI companion,
-                  including backend structure, seeded data, and the foundations
-                  for a gentler product experience.
-                </p>
-                <div class="case-chips">
-                  <span>Prototype Build</span>
-                  <span>Supportive UX</span>
-                  <span>Early Architecture</span>
-                </div>
-              </article>
             </div>
 
           </div>
